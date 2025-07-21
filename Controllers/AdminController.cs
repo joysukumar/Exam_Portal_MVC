@@ -92,7 +92,7 @@ namespace Exam_Portal.Controllers
                     var score = await _service.CalculateScoreAsync(user.Id);
                     scores.Add(new UserScoreVM
                     {
-                        Name = user.Name,  // Ensure this property exists in your Identity user model
+                        Name = user.Name,  
                         Score = score
                     });
                 }

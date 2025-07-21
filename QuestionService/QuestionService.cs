@@ -61,7 +61,7 @@ namespace Exam_Portal.QuestionService
             };
 
             _context.Questions.Add(question);
-            await _context.SaveChangesAsync(); // Save to generate Option IDs
+            await _context.SaveChangesAsync();
 
             // Set the correct OptionId now that IDs are created
             question.CorrectOptionId = question.Options[vm.CorrectOptionIndex].Id;
