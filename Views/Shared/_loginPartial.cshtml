@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Exam_Portal.Models.User> _signInManager
+@inject UserManager<Exam_Portal.Models.User> _userManager
+
+@if (_signInManager.IsSignedIn(User))
+{
+    <ul class="nav-item dropdown ms-auto">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+            @{
+                var currentUser = await _userManager.GetUserAsync(User);
+                var displayName = currentUser?.Name ?? "Guest";
+            }
+            <span>Hello, @displayName</span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+                <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a>
+            </li>
+        </ul>
+    </ul>
+}
+else
+{
+    <ul class="nav-item ms-auto">
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+    </ul>
+    <ul class="nav-item ms-auto">
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+    </ul>
+}

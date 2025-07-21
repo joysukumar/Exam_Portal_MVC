@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Exam_Portal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Exam_Portal.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background: #f7f9fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #004080;
+        }
+
+        .navbar-brand,
+        .nav-link,
+        .footer a {
+            color: #ffffff !important;
+        }
+
+            .nav-link:hover {
+                text-decoration: underline;
+            }
+
+        footer {
+            background-color: #e9ecef;
+            padding: 10px 0;
+        }
+
+        main {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow">
+            <div class="container d-flex justify-content-between align-items-center">
+                <!-- Left side: Brand -->
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Account" asp-action="Login">
+                    📝 ASP.NET Exam Portal
+                </a>
+
+                <!-- Right side: Home Button -->
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-light px-4 py-2 shadow-sm fw-semibold">
+                    🏠 Go to Home
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted text-center">
+        <div class="container">
+            &copy; 2025 - <strong>ASP.NET Exam Portal</strong>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

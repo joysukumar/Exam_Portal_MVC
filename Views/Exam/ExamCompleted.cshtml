@@ -1,0 +1,15 @@
+﻿@model Exam_Portal.Models.ViewModel.ExamCompletedVM
+
+<div class="container text-center py-5">
+    <div class="card shadow-lg border-0 rounded-4 p-5">
+        <h2 class="text-success mb-4">✅ Exam Already Completed</h2>
+        <p class="fs-4">You have already submitted the exam.</p>
+        <div class="mt-4">
+            <h4>Your Score:</h4>
+            <h3 class="text-primary">@Model.Score / @Model.TotalQuestions</h3>
+        </div>
+        <a href="@Url.Action("ViewAnswers", "Exam")" class="btn btn-secondary mt-4 px-4 py-2 rounded-pill">
+            View Your Answers
+        </a>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@using Exam_Portal.Models.ViewModel
+@model QuestionFormVM
+<h3>Create Question</h3>
+
+<form asp-action="Create" method="post">
+   
+    <label>Question</label>
+    <div class="form-group d-flex align-items-center">
+        <textarea asp-for="Text" class="form-control " rows="3"></textarea>
+        <span asp-validation-for="Text" class="text-danger small mb-0"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Options</label>
+        @for (int i = 0; i < Model.OptionTexts.Count; i++)
+        {
+            <div class="input-group mb-2">
+                <span class="input-group-text">
+                    <input type="radio" name="CorrectOptionIndex" value="@i" @(i == Model.CorrectOptionIndex ? "checked" : "") />
+                </span>
+                <textarea asp-for="OptionTexts[@i]" placeholder="Option @(i + 1)" class="form-control " rows="2"></textarea>
+                <span asp-validation-for="OptionTexts[@i]" class="text-danger small ms-2"></span>
+            </div>
+        }
+        <span class="form-text text-muted">Select the correct option</span>
+    </div>
+    </br>
+    <button type="submit" class="btn btn-success">Save Question</button>
+    <a asp-action="Dashboard" class="btn btn-secondary">↩ Back</a>
+</form>

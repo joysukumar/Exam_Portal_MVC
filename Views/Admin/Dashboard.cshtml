@@ -1,0 +1,66 @@
+﻿@using Exam_Portal_Web_Api.Models
+@model List<Question>
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary fw-bold mb-0">
+            🧾 Manage Questions <span class="badge bg-info fs-6">@Model.Count</span>
+        </h2>
+        <div class="btn-group">
+            <a asp-controller="Admin" asp-action="UserScores" class="btn btn-outline-dark shadow-sm me-2" title="View Scores of All Users">
+                📊 User Scores
+            </a>
+            <a asp-action="Create" class="btn btn-success shadow-sm" title="Add a new question">
+                ➕ Add Question
+            </a>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-lg">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped align-middle mb-0">
+                    <thead class="table-primary">
+                        <tr class="text-center">
+                            <th style="width: 60px;">Q.</th>
+                            <th>📄 Question</th>
+                            <th style="width: 240px;">⚙️ Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            int count = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-center fw-bold">@count</td>
+                                    <td class="fw-semibold">@item.Text</td>
+                                    <td class="text-center">
+                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-warning me-2 shadow-sm" title="Edit this question">
+                                            ✏️ Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id"
+                                           class="btn btn-sm btn-danger shadow-sm" title="Delete this question">
+                                            🗑️ Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted py-4">
+                                    😕 No questions found. Click "Add Question" to create one.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

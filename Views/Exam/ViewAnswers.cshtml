@@ -1,0 +1,54 @@
+﻿@using Exam_Portal_Web_Api.Models
+@model (List<UserAnswer>, List<Question>)
+
+@{
+    var userAnswers = Model.Item1;
+    var questions = Model.Item2;
+    int questionNumber = 1;
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">📖 Answer Review</h2>
+
+    @foreach (var q in questions)
+    {
+        var ua = userAnswers.FirstOrDefault(x => x.QuestionId == q.Id);
+        var selected = ua?.SelectedOptionId;
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title fw-semibold mb-3">Q@questionNumber. @q.Text</h5>
+                <ul class="list-group">
+                    @foreach (var o in q.Options)
+                    {
+                        string css = "list-group-item";
+                        if (o.Id == q.CorrectOptionId)
+                            css += " list-group-item-success fw-bold"; // correct answer
+                        else if (o.Id == selected)
+                            css += " list-group-item-danger"; // wrong selection
+
+                        <li class="@css">
+                            @o.Text
+                            @if (o.Id == q.CorrectOptionId)
+                            {
+                                <span class="badge bg-success ms-2">✔ Correct</span>
+                            }
+                            else if (o.Id == selected)
+                            {
+                                <span class="badge bg-danger ms-2">✖ You Selected</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        questionNumber++;
+    }
+</div> 
+
+<div class="text-center mt-4">
+    <a asp-controller="Account" asp-action="Login" class="btn btn-outline-secondary px-4 py-2 shadow-sm fw-semibold">
+        🏠 Go to Home
+    </a></br>
+</div>

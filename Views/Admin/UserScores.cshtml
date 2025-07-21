@@ -1,0 +1,46 @@
+﻿@using Exam_Portal.Models.ViewModel
+@model List<UserScoreVM>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-primary fw-bold mb-0">📊 User Scores</h3>
+        <a asp-controller="Admin" asp-action="Dashboard" class="btn btn-outline-secondary shadow-sm">
+            🔙 Back to Manage Questions
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        int i = 1;
+                        foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@user.Name</td>
+                                <td>@user.Score</td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center text-muted py-3">No scores found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

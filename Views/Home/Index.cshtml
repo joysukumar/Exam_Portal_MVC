@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "ASP.NET Exam Portal";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow-lg border-0" style="max-width: 700px; width: 100%;">
+        <div class="card-body p-5 text-center">
+            <h2 class="card-title text-primary mb-4">Welcome to the ASP.NET Core Exam Portal</h2>
+            <p class="card-text text-muted">
+                ASP.NET Core is a cross-platform, high-performance framework designed for developing modern, cloud-enabled, and internet-connected web applications.
+
+                This portal is intended to evaluate and enhance your proficiency in developing applications using the .NET platform.
+            </p>
+            <hr class="my-4" />
+            <p class="card-text lead">
+                Ready to test your understanding of ASP.NET Core?
+            </p>
+            <a asp-controller="Exam" asp-action="StartExam" class="btn btn-lg btn-primary mt-3 px-5">
+                Start Exam
+            </a>
+        </div>
+    </div>
+</div>

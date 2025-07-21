@@ -1,0 +1,21 @@
+﻿<div class="container mt-5 mb-5" style="min-height: 80vh;">
+    <div class="card shadow-lg border-0">
+        <div class="card-body text-center py-5" style="padding-bottom: 100px;">
+            <h2 class="mb-3 text-success fw-bold">🎉 Quiz Completed!</h2>
+
+            <p class="fs-5 mb-1">Your Score:</p>
+            <h3 class="display-6 fw-bold text-primary">
+                ✅ @ViewBag.Score / @ViewBag.TotalQuestions
+            </h3>
+
+            <div class="mt-5 d-flex justify-content-center flex-wrap gap-4">
+                <a asp-action="ViewAnswers" class="btn btn-outline-info px-4 py-2 shadow-sm fw-semibold">
+                    📖 View Correct Answers
+                </a>
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-secondary px-4 py-2 shadow-sm fw-semibold">
+                    🏠 Go to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
