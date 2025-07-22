@@ -67,7 +67,7 @@ namespace Exam_Portal.QuestionService
             question.CorrectOptionId = question.Options[vm.CorrectOptionIndex].Id;
 
             _context.Questions.Update(question);
-            await _context.SaveChangesAsync();s
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Question> GetQuestionByIdAsync(int id)
