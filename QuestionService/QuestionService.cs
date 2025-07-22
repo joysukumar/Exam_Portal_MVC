@@ -63,18 +63,16 @@ namespace Exam_Portal.QuestionService
             _context.Questions.Add(question);
             await _context.SaveChangesAsync();
 
-            // Set the correct OptionId now that IDs are created
+            
             question.CorrectOptionId = question.Options[vm.CorrectOptionIndex].Id;
 
             _context.Questions.Update(question);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();s
         }
 
         public async Task<Question> GetQuestionByIdAsync(int id)
         {
-            return await _context.Questions
-                .Include(q => q.Options)
-                .FirstOrDefaultAsync(q => q.Id == id);
+            return await _context.Questions.Include(q => q.Options).FirstOrDefaultAsync(q => q.Id == id);
         }
 
         public async Task DeleteQuestionAsync(int id)

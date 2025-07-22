@@ -10,7 +10,7 @@ namespace Exam_Portal.Models.ViewModel
         [Required(ErrorMessage = "Required")]
         public List<string> OptionTexts { get; set; } = new() { "", "", "", "" };
         [Required(ErrorMessage = "Required")]
-        public int CorrectOptionIndex { get; set; } // 0 to 3
+        public int CorrectOptionIndex { get; set; } 
     }
 
 }
